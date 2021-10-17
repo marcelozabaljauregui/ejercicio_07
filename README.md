@@ -25,7 +25,7 @@ pingapp-78d44c7496-g9h9n   0/1     CreateContainerConfigError   0          4s
 pingapp-78d44c7496-m7845   0/1     CreateContainerConfigError   0          4s
 ```
 ___
-_Aclaracion_ : no se usa el comando con el -n arba para el despliegue porque esta incluido en la METADATA de los archivos YAML.
+_Aclaracion_ : no se usa el comando con el -n arba para el despliegue porque esta incluido en la METADATA de los archivos YAML. Se que no es lo mejor porque eso es muy particular del cluster donde corra la aplicacion , pero siempre me olvidaba el -n arba. 
 ___
 
 ## Versión 1 archivo
