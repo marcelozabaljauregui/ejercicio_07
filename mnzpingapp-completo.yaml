@@ -1,0 +1,38 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pingapp-config-env
+  namespace: arba
+  labels:
+    app: pingapp
+data:
+  CONFIG_LOCATION: /config/config.json
+  DEVELOPER: "Marcelo Zabaljauregui"
+  TIPO: YAML_COMPLETO
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pingapp
+  namespace: arba
+  labels:
+    app: pingapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pingapp
+  template:
+    metadata:
+      labels:
+        app: pingapp
+    spec:
+      containers:
+      - name: pingapp
+        image: nicopaez/pingapp:3.0.0
+        ports:
+        - containerPort: 4567
+        envFrom:
+          - configMapRef:
+              name: pingapp-config-env
